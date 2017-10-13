@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViveControllerInput : MonoBehaviour {
+public class ViveControllerInputTest : MonoBehaviour {
 
     // A reference to the object being tracked. In this case, the controller.
     private SteamVR_TrackedObject trackedObj;
