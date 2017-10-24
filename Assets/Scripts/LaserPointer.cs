@@ -32,6 +32,7 @@ public class LaserPointer : MonoBehaviour
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
+    //TODO Laser is leaving a trail for some reason.  Bug that needs fixed.
     private void ShowLaser(RaycastHit hit)
     {
         laser.SetActive(true);
@@ -81,6 +82,8 @@ public class LaserPointer : MonoBehaviour
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
         {
             Teleport();
+            laser.SetActive(false);
+            reticle.SetActive(false);
         }
     }
 }
