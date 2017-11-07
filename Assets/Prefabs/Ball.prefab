@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 54335437827725014}
   - component: {fileID: 135375532869065714}
   - component: {fileID: 23489101847114368}
-  - component: {fileID: 114594900687900348}
+  - component: {fileID: 114906465373901768}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 884d0437493187e40b25be4cc70214aa, type: 2}
+  - {fileID: 2100000, guid: 44205ec1ab022ba4ba929aa0c1f92d6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &114594900687900348
+--- !u!114 &114906465373901768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -111,13 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36dbd3754ad6ee45902ccb483c21e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballMaterials:
+  controllerLeft: {fileID: 0}
+  controllerRight: {fileID: 0}
+  materials:
   - {fileID: 2100000, guid: 44205ec1ab022ba4ba929aa0c1f92d6e, type: 2}
   - {fileID: 2100000, guid: 884d0437493187e40b25be4cc70214aa, type: 2}
-  pasteMaterials:
-  - {fileID: 2100000, guid: cee9a184cf21f544db7729f7a8e2318d, type: 2}
-  - {fileID: 0}
-  highlightMaterial: {fileID: 2100000, guid: f90db64b55fdbf3468f14dfb85480781, type: 2}
 --- !u!135 &135375532869065714
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -1,31 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
+﻿using UnityEngine;
 
 public class HighlightController : MonoBehaviour {
 
-    public Material[] ballMaterials = new Material[2];
-    public Material[] pasteMaterials = new Material[2];
-
-    public Material highlightMaterial;
-    
-    private Material startMaterial;
-
-    private GameObject collidingObject;
-
-    private void Start () {
-        startMaterial = GetComponent<Renderer>().material;
-    }
+    public Material[] materials = new Material[2];
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Triggered! Colliding with " + other.gameObject.name);
-        GetComponent<Renderer>().material = highlightMaterial;
+        if (other.gameObject.name == "Controller (left)" || other.gameObject.name == "Controller (right)")
+        {
+            Debug.Log("Collision detected!");
+            GetComponent<Renderer>().material = materials[1];
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponent<Renderer>().material = startMaterial;
+        if (other.gameObject.name == "Controller (left)" || other.gameObject.name == "Controller (right)")
+        {
+            GetComponent<Renderer>().material = materials[0];
+        }
     }
-}
+  }
