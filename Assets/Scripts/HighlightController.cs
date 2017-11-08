@@ -8,7 +8,6 @@ public class HighlightController : MonoBehaviour {
     {
         if (other.gameObject.name == "Controller (left)" || other.gameObject.name == "Controller (right)")
         {
-            Debug.Log("Collision detected!");
             GetComponent<Renderer>().material = materials[1];
         }
     }
