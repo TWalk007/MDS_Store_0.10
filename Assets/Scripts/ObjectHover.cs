@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ObjectHover : MonoBehaviour {
 
-    private objectInHand;
-
-
 
 
 }

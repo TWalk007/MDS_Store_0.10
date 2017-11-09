@@ -1,10 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class HighlightController : MonoBehaviour {
+public class HighlightController_Paste : MonoBehaviour {
+
+    private GameObject pasteBox;
+    private Transform pasteBoxTrans;
+
+    public bool objectInHand = false;
 
     public Material[] materials = new Material[2];
 
-    public bool objectInHand = false;
+    private void Start()
+    {
+        pasteBoxTrans = gameObject.transform.Find("Paste_PH_4.2oz_HealthyClean_01");
+        pasteBox = pasteBoxTrans.gameObject;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,12 +23,12 @@ public class HighlightController : MonoBehaviour {
         {
             if (!objectInHand)
             {
-                GetComponent<Renderer>().material = materials[1];
+                pasteBox.GetComponent<Renderer>().material = materials[1];
             }
             else
             {
-                GetComponent<Renderer>().material = materials[0];
-            }            
+                pasteBox.GetComponent<Renderer>().material = materials[0];
+            }
         }
     }
 
@@ -27,7 +38,7 @@ public class HighlightController : MonoBehaviour {
         {
             if (objectInHand)
             {
-                GetComponent<Renderer>().material = materials[0];
+                pasteBox.GetComponent<Renderer>().material = materials[0];
             }
         }
     }
@@ -36,7 +47,7 @@ public class HighlightController : MonoBehaviour {
     {
         if (other.gameObject.name == "Controller (left)" || other.gameObject.name == "Controller (right)")
         {
-            GetComponent<Renderer>().material = materials[0];
+            pasteBox.GetComponent<Renderer>().material = materials[0];
         }
     }
-  }
+}

@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class ControllerGrabObject : MonoBehaviour {
 
+	public float rotationSpeed = 50.0f;
+
+	private float currentRot;
+	private float newRot;
+	private Vector3 angles;
+
 	private SteamVR_TrackedObject trackedObj;
 	private GameObject collidingObject;
 	private GameObject objectInHand;
+
+	private bool objectInHandCheck = false;
 
 	private SteamVR_Controller.Device Controller
 	{
@@ -30,11 +38,40 @@ public class ControllerGrabObject : MonoBehaviour {
 	public void OnTriggerEnter(Collider other)
 	{
 		SetCollidingObject(other);
+
+
+		//TODO  This does not take into account the current rotation value of the object when starting the rotation.
+		//      For example, if it's at 200° it might appear backwards to you but you might want to push it the other way instead
+		//      and get the reverse result of your intention.
+		if (Controller.GetAxis() != Vector2.zero)
+		{
+			if (Controller.GetAxis().y < 0f)
+			{
+				other.transform.Rotate(Vector3.up, rotationSpeed * Controller.GetAxis().y * 10 * Time.deltaTime);
+			}
+			if (Controller.GetAxis().y > 0f)
+			{
+				other.transform.Rotate(Vector3.down, rotationSpeed * -Controller.GetAxis().y * 10 * 2 * Time.deltaTime);
+			}
+		}
 	}
 
 	public void OnTriggerStay(Collider other)
 	{
 		SetCollidingObject(other);
+
+		if (Controller.GetAxis() != Vector2.zero)
+		{
+			if (Controller.GetAxis().y < 0f)
+			{
+				other.transform.Rotate(Vector3.up, rotationSpeed * Controller.GetAxis().y * 10 * Time.deltaTime);
+			}
+			if (Controller.GetAxis().y > 0f)
+			{
+				other.transform.Rotate(Vector3.down, rotationSpeed * -Controller.GetAxis().y * 10 * 2 * Time.deltaTime);
+			}            
+		}
+
 	}
 
 	public void OnTriggerExit(Collider other)
@@ -53,6 +90,16 @@ public class ControllerGrabObject : MonoBehaviour {
 
 		var joint = AddFixedJoint();
 		joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+		objectInHandCheck = true;
+		if (objectInHand.GetComponent<HighlightController>())
+		{
+			objectInHand.GetComponent<HighlightController>().objectInHand = objectInHandCheck;
+		}
+		else if (objectInHand.GetComponent<HighlightController_Rinse>())
+		{
+			objectInHand.GetComponent<HighlightController_Rinse>().objectInHand = objectInHandCheck;
+		}
+
 	}
 
 	private FixedJoint AddFixedJoint()
@@ -73,6 +120,16 @@ public class ControllerGrabObject : MonoBehaviour {
 			objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
 			objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
 		}
+		objectInHandCheck = false;
+		if (objectInHand.GetComponent<HighlightController>())
+		{
+			objectInHand.GetComponent<HighlightController>().objectInHand = objectInHandCheck;
+		}
+		else if (objectInHand.GetComponent<HighlightController_Rinse>())
+		{
+			objectInHand.GetComponent<HighlightController_Rinse>().objectInHand = objectInHandCheck;
+		}
+
 		objectInHand = null;
 	}
 
@@ -92,5 +149,7 @@ public class ControllerGrabObject : MonoBehaviour {
 				ReleaseObject();
 			}
 		}
+		
+		// TODO  Rotating object in hand right now conflicts with the joint.  Need to somehow turn the joint off temporarily to allow.          
 	}
 }

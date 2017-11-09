@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 54679651143395658}
   - component: {fileID: 65517299010377332}
   - component: {fileID: 114716687818420960}
-  - component: {fileID: 114440522670378438}
+  - component: {fileID: 114592351717382358}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Controllers
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 54266883758942568}
   - component: {fileID: 65485833738053664}
   - component: {fileID: 114669198044331106}
-  - component: {fileID: 114883296096317992}
+  - component: {fileID: 114424557686145772}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Controllers
@@ -120,7 +120,9 @@ GameObject:
   - component: {fileID: 413432}
   - component: {fileID: 2082592}
   - component: {fileID: 12409152}
-  - component: {fileID: 11411836}
+  - component: {fileID: 114789069948142864}
+  - component: {fileID: 114821493530298024}
+  - component: {fileID: 114265058717991266}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -395,20 +397,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   origin: {fileID: 0}
---- !u!114 &11411836
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 408470}
-  _ears: {fileID: 439042}
-  wireframe: 0
 --- !u!114 &11416958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   modelOverride: 
-  shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 3}
   verbose: 0
   createComponents: 1
   updateDynamically: 1
@@ -454,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   modelOverride: 
-  shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 3}
   verbose: 0
   createComponents: 1
   updateDynamically: 1
@@ -582,7 +570,7 @@ Transform:
   m_GameObject: {fileID: 1432792480851214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -0.0668, z: 0.0739}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 458974}
   m_RootOrder: 0
@@ -595,7 +583,7 @@ Transform:
   m_GameObject: {fileID: 1608326388501248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0668, z: 0.0739}
-  m_LocalScale: {x: 0.024999999, y: 0.024999999, z: 0.024999999}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 402434}
   m_RootOrder: 0
@@ -614,7 +602,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ec9d1c8bc1451a24c93d05352ec8b7cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -648,7 +636,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ec9d1c8bc1451a24c93d05352ec8b7cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -696,7 +684,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &54679651143395658
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -711,7 +699,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &65485833738053664
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -722,7 +710,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.024781065, y: 0.02455324, z: 0.02567666}
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0.0005857333, y: -0.065726005, z: 0.07329656}
 --- !u!65 &65517299010377332
 BoxCollider:
@@ -734,9 +722,41 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.024781065, y: 0.02455324, z: 0.02567666}
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0.0005857333, y: -0.065726005, z: 0.07329656}
---- !u!114 &114440522670378438
+--- !u!114 &114265058717991266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 408470}
+  _ears: {fileID: 439042}
+  wireframe: 0
+--- !u!114 &114424557686145772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346a42905a29b347b1f492e8ad7b49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerIndex: 0
+  triggerPressed: 0
+  steamPressed: 0
+  menuPressed: 0
+  padPressed: 0
+  padTouched: 0
+  gripped: 0
+--- !u!114 &114592351717382358
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -744,19 +764,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 124034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c819d6360abb9cf46af8cbff890107fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 7346a42905a29b347b1f492e8ad7b49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRigTransform: {fileID: 420908}
-  teleportReticlePrefab: {fileID: 1203700728842888, guid: 0cb539c33d5e0874ea571c4e8da33985,
-    type: 2}
-  headTransform: {fileID: 408470}
-  teleportReticleOffset: {x: 0, y: 0.05, z: 0}
-  teleportMask:
-    serializedVersion: 2
-    m_Bits: 256
-  laserPrefab: {fileID: 1310441216194634, guid: e44a75707a7d5d547b3924e418a5b392,
-    type: 2}
+  controllerIndex: 0
+  triggerPressed: 0
+  steamPressed: 0
+  menuPressed: 0
+  padPressed: 0
+  padTouched: 0
+  gripped: 0
 --- !u!114 &114669198044331106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -768,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ac01dc75129574a95190c62e1d59bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 884d0437493187e40b25be4cc70214aa, type: 2}
+  rotationSpeed: 10
 --- !u!114 &114716687818420960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -780,25 +797,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ac01dc75129574a95190c62e1d59bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 884d0437493187e40b25be4cc70214aa, type: 2}
---- !u!114 &114883296096317992
+  rotationSpeed: 10
+--- !u!114 &114789069948142864
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159396}
+  m_GameObject: {fileID: 189822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c819d6360abb9cf46af8cbff890107fa, type: 3}
+  m_Script: {fileID: 11500000, guid: a200554d92bd8e54792301df3fcaf328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRigTransform: {fileID: 420908}
-  teleportReticlePrefab: {fileID: 1203700728842888, guid: 0cb539c33d5e0874ea571c4e8da33985,
-    type: 2}
-  headTransform: {fileID: 408470}
-  teleportReticleOffset: {x: 0, y: 0.05, z: 0}
-  teleportMask:
-    serializedVersion: 2
-    m_Bits: 256
-  laserPrefab: {fileID: 1310441216194634, guid: e44a75707a7d5d547b3924e418a5b392,
-    type: 2}
+  Pointer: {fileID: 0}
+  OriginTransform: {fileID: 420908}
+  HeadTransform: {fileID: 408470}
+  TeleportFadeDuration: 0.2
+  HapticClickAngleStep: 10
+  NavmeshAnimator: {fileID: 0}
+  FadeMaterial: {fileID: 2100000, guid: 5ba70d58d085f2b44b315edf2d739376, type: 2}
+  Controllers:
+  - {fileID: 11411726}
+  - {fileID: 11463128}
+--- !u!114 &114821493530298024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feef0f746cf91a46b8fac4e2b747347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BorderMaterial: {fileID: 0}
+  BorderAlpha: 1
+  _BorderHeight: 0.2
