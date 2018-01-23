@@ -11,7 +11,7 @@ public class HighlightController_Rinse : MonoBehaviour {
 
     private void Start()
     {
-        bottleTrans = gameObject.transform.Find("Rinse_BTL");
+        bottleTrans = gameObject.transform.Find("Rinse_02");
         bottle = bottleTrans.gameObject;
     }
 
